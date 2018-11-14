@@ -1,0 +1,42 @@
+{extend name="base/bootstrap"/}
+{block name="body"}
+<body>
+<div class="main">
+    <!--导航部分-->
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid text-center">
+            <div class="col-xs-3">
+                <p class="navbar-text"><a href="index.html" class="navbar-link">首页</a></p>
+            </div>
+            <div class="col-xs-3">
+                <p class="navbar-text"><a href="#" class="navbar-link">服务</a></p>
+            </div>
+            <div class="col-xs-3">
+                <p class="navbar-text"><a href="#" class="navbar-link">发现</a></p>
+            </div>
+            <div class="col-xs-3">
+                <p class="navbar-text"><a href="#" class="navbar-link">我的</a></p>
+            </div>
+        </div>
+    </nav>
+    <!--导航结束-->
+
+    <div class="container-fluid">
+        {foreach name='list' item='vo' key='kkk'}
+
+        <div class="row noticeList">
+            <a href="{:url('Notice/list','id='.$vo.id)}">
+            <div class="col-xs-2">
+                <img class="noticeImg" src="__ROOT__{$vo.cover_id|get_cover_path}" />
+            </div>
+            <div class="col-xs-10">
+                <p class="title">{$vo.title}</p>
+                <p class="intro">{$vo.description}</p>
+                <p class="info">浏览: {$vo.view} <span class="pull-right">{$vo.create_time|date='Y-m-d H:i',###}</span> </p>
+            </div>
+            </a>
+        </div>
+        {/foreach}
+    </div>
+</div>
+{/block}
